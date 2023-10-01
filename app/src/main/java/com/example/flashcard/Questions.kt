@@ -80,7 +80,7 @@ class Questions {
 
     // Return true if the user has done 10 questions
     fun testIfDone(): Boolean {
-        return getNumDone() >= 9
+        return getNumDone() >= 10
     }
 
     // Return the number of questions done by the user
