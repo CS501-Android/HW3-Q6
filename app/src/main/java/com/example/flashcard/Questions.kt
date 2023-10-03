@@ -1,9 +1,12 @@
 package com.example.flashcard
 
+import android.os.Bundle
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import kotlin.math.floor
 import kotlin.math.roundToInt
 
-class Questions {
+class Questions : ViewModel() {
     private var numCorrect: Int = 0 // track the number of correct answers the user has given
     private var listOfQuestions = mutableListOf<String>() // the list of questions is just a list of string operation questions
     private var numDone: Int = 0 // track the number of questions the user has completed
@@ -64,6 +67,14 @@ class Questions {
         return listOfQuestions.isEmpty()
     }
 
+    fun getListOfQuestions(): MutableList<String> {
+        return this.listOfQuestions
+    }
+
+    fun setListOfQuestions(x: MutableList<String>) {
+        this.listOfQuestions = x
+    }
+
     // Remove the first element in the list
     fun remFirstQuestion() {
         listOfQuestions.removeFirst()
@@ -84,8 +95,22 @@ class Questions {
     }
 
     // Return the number of questions done by the user
-    private fun getNumDone(): Int {
+    fun getNumDone(): Int {
         return this.numDone
+    }
+
+    // Get the number of correct answers as an integer
+    fun getNumCorrectInt(): Int {
+        return this.numCorrect
+    }
+
+    // Set the number of completed questions
+    fun setNumComplete(x: Int) {
+        this.numDone = x
+    }
+
+    fun setNumCorrect(x: Int) {
+        this.numCorrect = x
     }
 
     // Get the number of correct answers
